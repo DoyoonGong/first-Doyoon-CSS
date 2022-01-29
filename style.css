@@ -1,0 +1,105 @@
+/* 변수를 할당해서 반복적인 것들을 편하게 관리 가능함 */
+:root{
+    --text-color: #f0f4f5;
+    --background-color: #263343;
+    --accent-color:  #d49466;
+}
+
+body{
+    margin: 0;
+    font-family: 'Source Sans Pro';
+}
+/* var를 이용해서 위에 선언한 변수를 넣어서 적용 */
+a{
+    text-decoration: none;
+    color: var(--text-color);
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--background-color);
+    padding: 8px 12px;
+}
+
+.navbar_logo{
+    font-size: 24px;
+    color: var(--text-color);
+}
+
+.navbar_logo i {
+    color: var(--accent-color);
+}
+
+.navbar_menu{
+    display: flex;
+    list-style: none;
+    padding-left: 0;
+}
+
+.navbar_menu li {
+    padding: 8px 12px;   
+}
+
+.navbar_menu li:hover {
+    background-color: var(--background-color);
+    border-radius:  4px;
+}
+
+.navbar_icons {
+    list-style: none;
+    color: var(--text-color);
+    display: flex;
+    padding-left: 0;
+}
+
+.navbar_icons li {
+    padding: 8px 12px;
+}
+
+.navbar_toggleBtn{
+    display: none;
+    position: absolute;
+    right: 32px;
+    font-size: 24px;
+    color: var(--accent-color);
+}
+
+/* 760px 이하일때 미디어쿼리를 이용해서 반응형으로 변환 */
+@media screen and (max-width: 760px) {
+    .navbar{
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 8px 24px;
+    }
+    /* 760px이하에서 메뉴와 아이콘 안보이게 설정 */
+    .navbar_menu{
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    .navbar_menu li{
+        width: 100%;
+        text-align: center;
+    }
+
+    .navbar_icons{
+        display: none;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .navbar_toggleBtn{
+        display: block;
+    }
+    /* 자바스크립트의 기능 사용 
+    active 일때 flex상태로 변환
+     */
+    .navbar_menu.active,
+    .navbar_icons.active {
+        display: flex;
+    }
+}
